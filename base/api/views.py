@@ -26,7 +26,10 @@ class MyTokenObtainPairView(TokenObtainPairView):
 def getRoutes(request):
     routes = [
         '/api/token',
-        '/api/token/refresh'
+        '/api/token/refresh',
+        '/api/students',
+        '/api/students/id',
+        '/api/students/popularite'
     ]
 
     return Response(routes)
