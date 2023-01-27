@@ -8,15 +8,16 @@
 
 ### 4) pip install -r requirements.txt
 
-### 5) Lancer PgAdmin en locale
+### 5) Télécharger Postgresql 14.6 et lancer PgAdmin en locale
 
-### 6) Créer une base de données "DDEV3 accéssible sur le port 5432
+### 6) Créer une base de données "DDEV accéssible sur le port 5432
 
 ### 7) (Si il n'y a pas de migration) Créer une nouvelle migration avec la commande: python manager.py makemigrations
 
 ### 8) Appliquer la nouvelle migration avec la commande: python manager.py migrate
 
 ### 9) Vérifier que les tables sont bien crées dans la base de données
+
 ### 10) Lancer le server avec la commande: python manage.py runserver
 
 ## Le server est prêt à recevoir des requetes !
