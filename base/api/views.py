@@ -11,24 +11,33 @@ from django.views.decorators.csrf import csrf_exempt
 @api_view(['GET'])
 def getRoutes(request):
     routes = [
-        '/api/players',
-        '/api/player/id',
-        '/api/player/new',
-        '/api/players/popularity',
-        '/api/players/historical',
-        '/api/players/historical/id'
+        #post
+        'players/',
+        'player/',
+        'players/elo/',
+        'players/historical/',
+        'player/historical/',
+        #post
+        'player/new/'
+        'user/new/',
+        'result/new/',
+        #update
+        'player/update/',
+        #delete
+        'player/delete/',
+        'user/delete/',
     ]
 
     return Response(routes)
 
 
-# GET /api/students
+# GET /api/players
 def getAllPlayers(request):
     students = Player.objects.all()
     return HttpResponse(students)
 
 
-# GET /api/player/id
+# GET /api/player
 def getPlayerByID(request):
     request_body = getJson(request)
     id = request_body["id"]
@@ -49,8 +58,8 @@ def getHistorical(request):
     return HttpResponse(historical)
 
 
-# GET /api/players/historical/id
-def getHistorical(request):
+# GET /api/player/historical
+def getHistoricalByID(request):
     request_body = getJson(request)
     id = request_body["id"]
     histo1 = Results.objects.filter(player1_id=id)
@@ -98,7 +107,7 @@ def newResult(request):
 
 
 @csrf_exempt
-# POST /api/players/update/id
+# POST /api/players/update
 def updatePlayer(request):
     request_body = getJson(request)
     pseudo = request_body["pseudo"]
@@ -111,7 +120,7 @@ def updatePlayer(request):
     return HttpResponse("Nouveau Result")
 
 
-# DELETE /api/player
+# DELETE /api/player/delete
 def deletePlayerByID(request):
     request_body = getJson(request)
     id = request_body["id"]
@@ -120,7 +129,7 @@ def deletePlayerByID(request):
     return HttpResponse("Player deleted")
 
 
-# DELETE /api/user
+# DELETE /api/user/delete
 def deleteUserByID(request):
     request_body = getJson(request)
     id = request_body["id"]

@@ -11,11 +11,17 @@ urlpatterns = [
     #get
     path('', views.getRoutes),
     path('players/', views.getAllPlayers),
-    path('player/id/', views.getPlayerByID),
-    path('players/popularity', views.getOrderPlayersByElo),
+    path('player/', views.getPlayerByID),
+    path('players/elo/', views.getOrderPlayersByElo),
+    path('players/historical/', views.getHistorical),
+    path('player/historical/', views.getHistoricalByID),
     #post
-    path('player/new', views.newPlayer),
-    path('user/new', views.newUser),
-    path('result/new', views.newResult),
-    path('players/elo', views.getOrderPlayersByElo),
+    path('player/new/', views.newPlayer),
+    path('user/new/', views.newUser),
+    path('result/new/', views.newResult),
+    #update
+    path('player/update/', views.updatePlayer),
+    #delete
+    path('player/delete/', views.deletePlayerByID),
+    path('user/delete/', views.deleteUserByID),
 ]
