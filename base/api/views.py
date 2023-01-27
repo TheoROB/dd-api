@@ -4,8 +4,9 @@ from django.http import JsonResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.http import HttpResponse
+from base.api.serializers import PlayerSerializer
 from base.models import Player, Results, User
-from utils.helper import getJson, toJson
+from utils.helper import getJson
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -35,7 +36,8 @@ def getRoutes(request):
 # GET /api/players
 def getAllPlayers(request):
     players = Player.objects.all()
-    return HttpResponse(players.values())
+    serializer = PlayerSerializer(players, many=True)
+    return HttpResponse(json.dumps(serializer.data))
 
 
 # GET /api/player
