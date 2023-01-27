@@ -11,14 +11,11 @@ urlpatterns = [
     #get
     path('', views.getRoutes),
     path('players/', views.getAllPlayers),
-    path('player/id/', views.getPlayerID),
-    path('players/popularity', views.getOrderPlayersByPopularity),
+    path('player/id/', views.getPlayerByID),
+    path('players/popularity', views.getOrderPlayersByElo),
     #post
     path('player/new', views.newPlayer),
     path('user/new', views.newUser),
     path('result/new', views.newResult),
-
-    # path('token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
-    # path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    
+    path('players/elo', views.getOrderPlayersByElo),
 ]
