@@ -14,7 +14,7 @@
 
 ### 7) (Si il n'y a pas de migration) Créer une nouvelle migration avec la commande: python manager.py makemigrations
 
-### 8) Appliquer la nouvelle migration avec la commande: python manager.py migrate
+### 8) Appliquer la nouvelle migration avec la commande: python manage.py migrate
 
 ### 9) Vérifier que les tables sont bien crées dans la base de données
 
