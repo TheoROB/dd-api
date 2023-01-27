@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.http import HttpResponse
 from base.models import Player, Results, User
-from utils.helper import getJson
+from utils.helper import getJson, toJson
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -34,8 +34,8 @@ def getRoutes(request):
 
 # GET /api/players
 def getAllPlayers(request):
-    students = Player.objects.all()
-    return HttpResponse(students)
+    players = Player.objects.all()
+    return HttpResponse(players.values())
 
 
 # GET /api/player
@@ -44,19 +44,19 @@ def getPlayerByID(request):
     id = request_body["id"]
 
     player = Player.objects.get(id=id)
-    return HttpResponse(player)
+    return HttpResponse(player.values())
 
 
 # GET /api/players/elo
 def getOrderPlayersByElo(request):
     players = Player.objects.all().order_by('elo').values()
-    return HttpResponse(players)
+    return HttpResponse(players.values())
 
 
 # GET/api/players/historical
 def getHistorical(request):
     historical = Results.objects.all()[:9]
-    return HttpResponse(historical)
+    return HttpResponse(historical.values())
 
 
 # GET /api/player/historical
@@ -67,7 +67,7 @@ def getHistoricalByID(request):
     histo2 = Results.objects.filter(player2_id=id)
 
     historical = len(list(chain(histo1, histo2)))
-    return HttpResponse(historical)
+    return HttpResponse(historical.values())
 
 
 @csrf_exempt
